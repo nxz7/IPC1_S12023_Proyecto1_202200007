@@ -7,6 +7,7 @@ package proyecto1;
 import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,12 +15,23 @@ import javax.swing.JOptionPane;
  * @author natalia
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+//REGISTRO lol = new REGISTRO(aList);
+public static ArrayList <clienteArreglo> aList;
+clienteArreglo clienteArreglo = new clienteArreglo();
 
-    /**
+    
+
+ /**
      * Creates new form MenuPrincipal
      */
+
+
     public MenuPrincipal() {
         initComponents();
+        this.aList = PROYECTO1.aList; 
+        
+        
+        
     }
 
     /**
@@ -205,7 +217,7 @@ private void cerrar(){
     }//GEN-LAST:event_correousActionPerformed
 // BOTON DE REGISTRAR
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        
+        dispose();
         REGISTRO pi = new REGISTRO();
         pi.setVisible(true);
         
@@ -220,10 +232,24 @@ private void cerrar(){
          { 
              Component frame;
              JOptionPane.showMessageDialog(null, "Hola administrador!");
+             dispose();
+             ADMINISTRADOR pi = new ADMINISTRADOR();
+             pi.setVisible(true);
+             
          }
+         
+  
          else
-         {
-             JOptionPane.showMessageDialog(null, "usuario incorrecto");
+         {   boolean registrado = false; 
+                 
+             for (int i=0; i< this.aList.size();i++){
+                 if(correous1.equals(this.aList.get(i).getCorreo())&& contraus1.equals(this.aList.get(i).getContra())){
+                     JOptionPane.showMessageDialog(null, "Bienvenido "+ this.aList.size());
+                     registrado=true;
+                     break;
+                 }
+                 }
+             if (!registrado)JOptionPane.showMessageDialog(null, "usuario incorrecto");
          }
     }//GEN-LAST:event_botonIngresarActionPerformed
 
@@ -257,7 +283,9 @@ private void cerrar(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new MenuPrincipal().setVisible(true);
+                
             }
         });
     }
