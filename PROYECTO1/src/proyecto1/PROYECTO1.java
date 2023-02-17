@@ -7,6 +7,7 @@ import javax.swing.*;
 public class PROYECTO1 {
 
     public static ArrayList <clienteArreglo> aList = new ArrayList<>();
+    public static ArrayList <registroArreglos> bList = new ArrayList<>();
     
     
     public static void main(String[] args) {

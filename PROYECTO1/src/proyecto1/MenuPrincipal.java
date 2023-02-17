@@ -161,8 +161,8 @@ clienteArreglo clienteArreglo = new clienteArreglo();
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(correous)
-                            .addComponent(contraus, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
+                            .addComponent(correous, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(contraus)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(138, 138, 138)
                         .addComponent(botonIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,9 +245,13 @@ private void cerrar(){
              for (int i=0; i< this.aList.size();i++){
                  if(correous1.equals(this.aList.get(i).getCorreo())&& contraus1.equals(this.aList.get(i).getContra())){
                      JOptionPane.showMessageDialog(null, "Bienvenido "+ this.aList.size());
+                     dispose();
+                     frameCliente pi = new frameCliente();
+                     pi.setVisible(true);
                      registrado=true;
                      break;
                  }
+                 
                  }
              if (!registrado)JOptionPane.showMessageDialog(null, "usuario incorrecto");
          }

@@ -86,8 +86,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="correous" max="32767" attributes="0"/>
-                              <Component id="contraus" pref="83" max="32767" attributes="0"/>
+                              <Component id="correous" pref="146" max="32767" attributes="0"/>
+                              <Component id="contraus" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">

@@ -4,11 +4,16 @@
  */
 package proyecto1;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author natalia
  */
 public class ADMINISTRADOR extends javax.swing.JFrame {
+   ArrayList <registroArreglos> bList = new ArrayList<>();
+   private String kioscoNom, kioscoCod, codReg, region,estandar,especial,depNom,depRegion,muniNombre;
 
     /**
      * Creates new form ADMINISTRADOR
@@ -16,7 +21,18 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
     public ADMINISTRADOR() {
         
         initComponents();
+        this.bList = PROYECTO1.bList;
+        kioscoNom = "";
+        kioscoCod = "";
+        codReg = "";
+        region = "";
+        estandar = "";
+        especial = "";
+        depNom= "";
+        depRegion = "";
         
+        muniNombre="";
+        dep.setSelectedItem(null);
     }
     
     
@@ -34,19 +50,19 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        botonKiosco = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        botonReg = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        botonDep = new javax.swing.JButton();
-        botonMuni = new javax.swing.JButton();
         REGIONES = new javax.swing.JComboBox<>();
+        dep = new javax.swing.JComboBox<>();
+        muniNom = new javax.swing.JTextField();
+        botonKiosco = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        kioscoNombre = new javax.swing.JTextField();
+        kioscoCodigo = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,47 +88,7 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 51, 0));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel2.setBackground(new java.awt.Color(85, 74, 0));
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(109, 80, 2));
-        jLabel2.setText("KIOSCO");
-
-        botonKiosco.setBackground(new java.awt.Color(102, 102, 0));
-        botonKiosco.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        botonKiosco.setForeground(new java.awt.Color(255, 255, 255));
-        botonKiosco.setText("registrar");
-        botonKiosco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonKioscoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(28, 28, 28))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonKiosco, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonKiosco)
-                .addContainerGap())
-        );
+        jPanel1.setBackground(new java.awt.Color(187, 212, 206));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -120,8 +96,6 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(109, 80, 2));
         jLabel3.setText("regiones");
-
-        botonReg.setText("registar");
 
         jLabel6.setBackground(new java.awt.Color(85, 74, 0));
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -133,84 +107,113 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(109, 80, 2));
         jLabel9.setText("municipio");
 
-        botonDep.setText("registrar");
-
-        botonMuni.setText("registrar");
-
         REGIONES.setBackground(new java.awt.Color(204, 204, 0));
         REGIONES.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         REGIONES.setForeground(new java.awt.Color(0, 0, 0));
-        REGIONES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC" }));
+        REGIONES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "NT", "NO", "SO", "SOC", "NOC", "PETEN", "CENTRAL" }));
         REGIONES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 REGIONESActionPerformed(evt);
             }
         });
 
+        dep.setBackground(new java.awt.Color(255, 255, 204));
+        dep.setForeground(new java.awt.Color(0, 0, 0));
+
+        muniNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                muniNomActionPerformed(evt);
+            }
+        });
+
+        botonKiosco.setBackground(new java.awt.Color(102, 102, 0));
+        botonKiosco.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        botonKiosco.setForeground(new java.awt.Color(255, 255, 255));
+        botonKiosco.setText("registrar");
+        botonKiosco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonKioscoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(85, 74, 0));
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(109, 80, 2));
+        jLabel2.setText("KIOSCO");
+
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("espec");
+        jLabel10.setText("Nombre");
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("estandar");
+        jLabel12.setText("Codigo");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(47, 47, 47))
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botonDep))
+                            .addComponent(botonKiosco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(dep, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(REGIONES, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(REGIONES, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(86, 86, 86)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 63, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(botonReg, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10))
-                            .addComponent(botonMuni, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
+                                        .addGap(93, 93, 93)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(muniNom, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(kioscoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(107, 107, 107)
+                                .addComponent(kioscoCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)))
+                        .addGap(29, 29, 29))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel3)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(REGIONES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(dep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(REGIONES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel10)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel12)))
-                .addGap(15, 15, 15)
-                .addComponent(botonReg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(botonDep)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(botonMuni)
-                .addGap(38, 38, 38))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17)))
+                .addComponent(muniNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(kioscoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kioscoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(botonKiosco)
+                .addContainerGap())
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -226,7 +229,7 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -237,6 +240,7 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("ADMINISTRADOR");
 
         botonAdmiMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -253,21 +257,19 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonAdmiMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                        .addComponent(botonAdmiMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,9 +280,9 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
                     .addComponent(botonAdmiMenu))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -297,10 +299,6 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonKioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonKioscoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonKioscoActionPerformed
-
     private void botonAdmiMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAdmiMenuActionPerformed
         dispose();
         MenuPrincipal pi = new MenuPrincipal();
@@ -308,10 +306,138 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAdmiMenuActionPerformed
 /// REGIONES
     private void REGIONESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REGIONESActionPerformed
+try{
+      if(REGIONES.getSelectedItem().equals("M")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Guatemala");
+       }  
+      else if(REGIONES.getSelectedItem().equals("NT")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Baja Verapaz");
+          dep.addItem("Alta Verapaz");
+       }
+      else if(REGIONES.getSelectedItem().equals("NO")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("El Progreso");
+          dep.addItem("Izabal");
+          dep.addItem("Zacapa");
+          dep.addItem("Chiquimula");
+       }
+      else if(REGIONES.getSelectedItem().equals("SO")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Santa Rosa");
+          dep.addItem("Jalapa");
+          dep.addItem("Jutiapa");
+       }
+      else if(REGIONES.getSelectedItem().equals("SOC")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Solola");
+          dep.addItem("Totonicapan");
+          dep.addItem("Quetzaltenango");
+          dep.addItem("Suchitepequez");
+          dep.addItem("Retalhuleu");
+          dep.addItem("San Marcos");
+       }
+      else if(REGIONES.getSelectedItem().equals("NOC")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Huehuetenango");
+          dep.addItem("Quiche");
+   
+       }
+      else if(REGIONES.getSelectedItem().equals("CENTRAL")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Sacatepequez");
+          dep.addItem("Chimaltenango");
+          dep.addItem("Escuintla");
+   
+       }
+      else if(REGIONES.getSelectedItem().equals("PETEN")){
+          dep.removeAllItems();
+          dep.setSelectedItem(null);
+          dep.addItem("Peten");
         
+       }
+      }
+catch (Exception e) {
+    System.out.println(e);
+}
     }//GEN-LAST:event_REGIONESActionPerformed
 
+    private void muniNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muniNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_muniNomActionPerformed
+
+    private void botonKioscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonKioscoActionPerformed
+        // REGISTRAR KIOSCOS, REGIONES, DEP Y MUNICIPIOS
+        
+        kioscoNom = kioscoNombre.getText();
+        kioscoCod = kioscoCodigo.getText();
+        region = REGIONES.getSelectedItem().toString();
+        depNom= dep.getSelectedItem().toString();;
+        muniNombre=muniNom.getText();
+        estandar = "";
+        especial ="";
+        
+        registroArreglos b = new registroArreglos ();
+        b.setRegion(region);
+        b.setKioscoNom(kioscoNom);
+        b.setKioscoCod(kioscoCod);
+        b.setMuniNombre(muniNombre);
+        b.setDepNom(depNom);
+        if(region.equals("M")){
+            b.setEstandar( "25.00");
+            b.setEspecial("35.00");
+        }
+        else if (region.equals("NT")){
+            b.setEstandar( "45.55");
+            b.setEspecial("68.50");
+        }
+        else if(REGIONES.getSelectedItem().equals("NO")){
+            b.setEstandar( "35.48");
+            b.setEspecial("56.68");
+       }
+      else if(REGIONES.getSelectedItem().equals("SO")){
+            b.setEstandar( "32.48");
+            b.setEspecial("38.68");
+       }
+      else if(REGIONES.getSelectedItem().equals("SOC")){
+            b.setEstandar( "29.00");
+            b.setEspecial("34.00");
+       }
+      else if(REGIONES.getSelectedItem().equals("NOC")){
+            b.setEstandar( "40.00");
+            b.setEspecial("44.50");
+   
+       }
+      else if(REGIONES.getSelectedItem().equals("CENTRAL")){
+            b.setEstandar( "38.00");
+            b.setEspecial("41.00");
+   
+       }
+      else if(REGIONES.getSelectedItem().equals("PETEN")){
+            b.setEstandar( "51.00");
+            b.setEspecial("68.00");
+        
+       }
+      
+        
+        bList.add(b);
+        JOptionPane.showMessageDialog(null, " UBICACION REGISTRADA ");
+        
+    }//GEN-LAST:event_botonKioscoActionPerformed
+
     /**
+     * a.setNombre(nombre);
+        a.setCorreo(correo);
+        a.setContra(contra);
+        a.setRol(rol);
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -349,10 +475,8 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> REGIONES;
     private javax.swing.JButton botonAdmiMenu;
-    private javax.swing.JButton botonDep;
     private javax.swing.JButton botonKiosco;
-    private javax.swing.JButton botonMuni;
-    private javax.swing.JButton botonReg;
+    private javax.swing.JComboBox<String> dep;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -366,8 +490,10 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTextField kioscoCodigo;
+    private javax.swing.JTextField kioscoNombre;
+    private javax.swing.JTextField muniNom;
     // End of variables declaration//GEN-END:variables
 }

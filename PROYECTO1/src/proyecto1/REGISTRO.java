@@ -1,9 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package proyecto1;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+import java.util.regex.Pattern;
 /**
  *
  * @author natalia
@@ -142,8 +142,6 @@ private String correo, contra, nombre;
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("ROL");
 
-        contraGUI.setText("jPasswordField1");
-
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("FOTOGRAFIA");
 
@@ -158,8 +156,6 @@ private String correo, contra, nombre;
                 apellidoActionPerformed(evt);
             }
         });
-
-        dpi.setText("jPasswordField2");
 
         telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,7 +252,7 @@ private String correo, contra, nombre;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(contraGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(contraGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
@@ -385,6 +381,10 @@ private String correo, contra, nombre;
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         // BOTON DE REGISTRAR AL NUEVO CLIENTE  > Cliente > almacenar en arrayList
+        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+    Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
+    Pattern lowerCasePatten = Pattern.compile("[a-z ]");
+    Pattern digitCasePatten = Pattern.compile("[0-9 ]");
         correo = correoGUI.getText();
         contra =contraGUI.getText();
         nombre = nombreGUI.getText();
@@ -396,9 +396,28 @@ private String correo, contra, nombre;
         a.setCorreo(correo);
         a.setContra(contra);
         a.setRol(rol);
+        if (contraGUI.getText() == null || correoGUI.getText() == null || nombreGUI.getText() == null || apellido.getText() == null || dpi.getText() == null || alias.getText() == null || telefono.getText() == null || nacimiento.getDate() == null) {
+          JOptionPane.showMessageDialog(null, "POR FAVOR LLENAR TODOS LOS DATOS");
+              }
+        if (!specailCharPatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener un caracter especial");
+         }
+         if (!UpperCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener MAYUSCULAS");
+         }
+         if (!lowerCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener minusculas");
+         }
+         if (!digitCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener numeros !!! ");
+          }
+        
+        else{
+            aList.add(a);
+        }
         
         // se agrega al arreglo
-        aList.add(a);
+        
     }//GEN-LAST:event_registrarActionPerformed
     //public ArrayList <clienteArreglo> getAList(){ return aList; }
     
