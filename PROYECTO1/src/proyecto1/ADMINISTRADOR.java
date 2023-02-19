@@ -380,7 +380,7 @@ catch (Exception e) {
         kioscoNom = kioscoNombre.getText();
         kioscoCod = kioscoCodigo.getText();
         region = REGIONES.getSelectedItem().toString();
-        depNom= dep.getSelectedItem().toString();;
+        depNom= dep.getSelectedItem().toString();
         muniNombre=muniNom.getText();
         estandar = "";
         especial ="";

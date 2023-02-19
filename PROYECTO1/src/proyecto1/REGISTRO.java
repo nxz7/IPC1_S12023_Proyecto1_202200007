@@ -451,19 +451,9 @@ private String correo, contra, nombre;
     }//GEN-LAST:event_kioscoElegirActionPerformed
 
     private void rolGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolGUIActionPerformed
-        /*for (int i=0; i< this.aList.size();i++){
-                 if(correous1.equals(this.aList.get(i).getCorreo())&& contraus1.equals(this.aList.get(i).getContra())){
-                     JOptionPane.showMessageDialog(null, "Bienvenido "+ this.aList.size());
-                     dispose();
-                     frameCliente pi = new frameCliente();
-                     pi.setVisible(true);
-                     registrado=true;
-                     break;
-                 }
-                 
-                 }
-          dep.addItem("Guatemala");
-       }*/
+        /*
+       PARA QUE SALGAN LOS KIOSCOS REGISTRADOS
+       */
         try{
             if(rolGUI.getSelectedItem().equals("KIOSCO")){
                 kioscoElegir.removeAllItems();
