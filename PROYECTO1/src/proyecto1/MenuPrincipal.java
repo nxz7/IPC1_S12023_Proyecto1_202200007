@@ -124,6 +124,12 @@ clienteArreglo clienteArreglo = new clienteArreglo();
             }
         });
 
+        contraus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrausActionPerformed(evt);
+            }
+        });
+
         botonIngresar.setBackground(new java.awt.Color(102, 102, 0));
         botonIngresar.setForeground(new java.awt.Color(255, 255, 255));
         botonIngresar.setText("ingresar");
@@ -256,6 +262,10 @@ private void cerrar(){
              if (!registrado)JOptionPane.showMessageDialog(null, "usuario incorrecto");
          }
     }//GEN-LAST:event_botonIngresarActionPerformed
+
+    private void contrausActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrausActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contrausActionPerformed
 
     /**
      * @param args the command line arguments

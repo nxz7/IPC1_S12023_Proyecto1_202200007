@@ -223,6 +223,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="contraus">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contrausActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonIngresar">
           <Properties>
