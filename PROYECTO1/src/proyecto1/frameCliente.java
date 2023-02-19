@@ -39,17 +39,21 @@ public class frameCliente extends javax.swing.JFrame {
         destinoDir = "";
         
         boolean vic = true;
-        
+        ///// ARREGLAR REPETIDOS 
         try{ 
             if(vic){
                 origenDepGUI.removeAllItems();
                 origenDepGUI.setSelectedItem(null);
+                destinoDepGUI.removeAllItems();
+                destinoDepGUI.setSelectedItem(null);
         
                for( int i= 0; i<this.bList.size(); i++){
                    
                 String v = this.bList.get(i).getDepNom().toString();
-            
-                  origenDepGUI.addItem(v);
+                String f = this.bList.get(i).getDepNom().toString();
+
+                        destinoDepGUI.addItem(f);
+                        origenDepGUI.addItem(v);
         }}}
         catch (Exception e) {
            System.out.println(e);
