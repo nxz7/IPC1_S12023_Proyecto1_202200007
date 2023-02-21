@@ -18,6 +18,7 @@ public class registroArreglos {
     private String muniNombre; 
     private int contador = 0;
     private int contadorUsuario = 0;
+    
     private int contadorPaquetes = 0;
     private int contadorIngresos=0;
     
