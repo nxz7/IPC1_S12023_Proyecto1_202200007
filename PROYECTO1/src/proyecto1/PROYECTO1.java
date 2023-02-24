@@ -1,5 +1,8 @@
 
 package proyecto1;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import javax.swing.*;  
@@ -19,6 +22,7 @@ public class PROYECTO1 {
         
         
     }
+     
 
     
 }

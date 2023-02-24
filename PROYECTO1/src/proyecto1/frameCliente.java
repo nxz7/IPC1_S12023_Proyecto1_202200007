@@ -4,6 +4,10 @@
  */
 package proyecto1;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -737,8 +741,29 @@ facturacion z= new facturacion();
     }//GEN-LAST:event_cotizarGUIActionPerformed
 
     private void descCotiGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descCotiGUIActionPerformed
-        
-        
+        StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<html><body style='color: blue;'>cotizacion<br><ul>");
+
+        double totalesHTML= totalEstandar;
+        double totalespHTML=totalEspecial;
+        htmlBuilder.append("total estandar:" + totalesHTML+ "<br>");
+        htmlBuilder.append("total especial: "+ totalespHTML + "<br>");
+
+        htmlBuilder.append("</ul></body></html>");
+
+        String html = htmlBuilder.toString();
+
+        try {
+            File file = new File("cotizacion.html");
+            FileWriter writer = new FileWriter(file);
+            writer.write(html);
+            writer.close();
+            Desktop.getDesktop().open(file); 
+
+            JOptionPane.showMessageDialog(null, "factura descargada!");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "error" + e.getMessage());
+        }
         
         
     }//GEN-LAST:event_descCotiGUIActionPerformed
