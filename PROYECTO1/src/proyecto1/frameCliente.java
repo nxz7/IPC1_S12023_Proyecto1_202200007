@@ -7,7 +7,6 @@ package proyecto1;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -761,8 +760,8 @@ facturacion z= new facturacion();
             Desktop.getDesktop().open(file); 
 
             JOptionPane.showMessageDialog(null, "factura descargada!");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "error" + e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e);
         }
         
         
