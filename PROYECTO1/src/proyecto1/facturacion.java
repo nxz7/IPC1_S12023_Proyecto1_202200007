@@ -22,6 +22,16 @@ public class facturacion {
     private String destinoDir; 
     //-----------------
     private String contraEntrega;
+
+    
+
+    
+    private double estandar; 
+    private double  especial; 
+
+
+    private double totalEstandar;
+    private double totalEspecial;
     
     
     public facturacion(){
@@ -39,9 +49,12 @@ public class facturacion {
         destinoMuni = new String();
         destinoDir = new String();
         
-        
+        estandar=0;
+        especial=0;
         peso = 0;
         cantPaquetes = 0;
+        totalEstandar=0;
+        totalEspecial=0;
     }
 
     public String getOrigenDep() {
@@ -155,4 +168,36 @@ public class facturacion {
     public void setContraEntrega(String contraEntrega) {
         this.contraEntrega = contraEntrega;
     }
+    
+    public double getEstandar() {
+        return estandar;
+    }
+
+    public void setEstandar(double estandar) {
+        this.estandar = estandar;
+    }
+
+    public double getEspecial() {
+        return especial;
+    }
+
+    public void setEspecial(double especial) {
+        this.especial = especial;
+    }
+        public double getTotalEstandar() {
+        return totalEstandar;
+    }
+
+    public void setTotalEstandar(double totalEstandar) {
+        this.totalEstandar = totalEstandar;
+    }
+
+    public double getTotalEspecial() {
+        return totalEspecial;
+    }
+
+    public void setTotalEspecial(double totalEspecial) {
+        this.totalEspecial = totalEspecial;
+    }
+    
 }

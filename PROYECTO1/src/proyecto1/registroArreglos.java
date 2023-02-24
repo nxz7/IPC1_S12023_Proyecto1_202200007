@@ -10,8 +10,7 @@ public class registroArreglos {
     // REG
     private String region;
     //// ESTABLECER YA LOS PRECIOS EN ADMINISTRADOR 
-    private String estandar; 
-    private String especial; 
+    
     //-----------
     private String depNom; 
     private String depRegion; 
@@ -27,8 +26,7 @@ public class registroArreglos {
         kioscoCod = new String();
         codReg = new String();
         region = new String();
-        estandar = new String();
-        especial = new String();
+        
         depNom = new String();
         depRegion = new String();
         muniNombre = new String();
@@ -103,21 +101,7 @@ public class registroArreglos {
         this.region = region;
     }
 
-    public String getEstandar() {
-        return estandar;
-    }
-
-    public void setEstandar(String estandar) {
-        this.estandar = estandar;
-    }
-
-    public String getEspecial() {
-        return especial;
-    }
-
-    public void setEspecial(String especial) {
-        this.especial = especial;
-    }
+    
 
     public String getDepNom() {
         return depNom;

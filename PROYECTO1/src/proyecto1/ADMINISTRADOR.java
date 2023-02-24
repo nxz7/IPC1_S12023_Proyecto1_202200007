@@ -391,41 +391,7 @@ catch (Exception e) {
         b.setKioscoCod(kioscoCod);
         b.setMuniNombre(muniNombre);
         b.setDepNom(depNom);
-        if(region.equals("M")){
-            b.setEstandar( "25.00");
-            b.setEspecial("35.00");
-        }
-        else if (region.equals("NT")){
-            b.setEstandar( "45.55");
-            b.setEspecial("68.50");
-        }
-        else if(REGIONES.getSelectedItem().equals("NO")){
-            b.setEstandar( "35.48");
-            b.setEspecial("56.68");
-       }
-      else if(REGIONES.getSelectedItem().equals("SO")){
-            b.setEstandar( "32.48");
-            b.setEspecial("38.68");
-       }
-      else if(REGIONES.getSelectedItem().equals("SOC")){
-            b.setEstandar( "29.00");
-            b.setEspecial("34.00");
-       }
-      else if(REGIONES.getSelectedItem().equals("NOC")){
-            b.setEstandar( "40.00");
-            b.setEspecial("44.50");
-   
-       }
-      else if(REGIONES.getSelectedItem().equals("CENTRAL")){
-            b.setEstandar( "38.00");
-            b.setEspecial("41.00");
-   
-       }
-      else if(REGIONES.getSelectedItem().equals("PETEN")){
-            b.setEstandar( "51.00");
-            b.setEspecial("68.00");
         
-       }
       
         
         bList.add(b);

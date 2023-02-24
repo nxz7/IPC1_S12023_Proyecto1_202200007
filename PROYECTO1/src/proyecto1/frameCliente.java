@@ -20,6 +20,8 @@ public class frameCliente extends javax.swing.JFrame {
     
 
     private int cantPaquetes, peso; 
+    private double estandar, especial, totalEstandar, totalEspecial;
+    
     
     public frameCliente() {
         initComponents();
@@ -118,13 +120,14 @@ public class frameCliente extends javax.swing.JFrame {
         destinoDicGUI = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        pesoGUI = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cotizarGUI = new javax.swing.JButton();
         cantidadGUI = new javax.swing.JTextField();
+        pesoGUI = new javax.swing.JFormattedTextField();
+        descCotiGUI = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -339,11 +342,6 @@ public class frameCliente extends javax.swing.JFrame {
         jLabel18.setForeground(new java.awt.Color(102, 102, 0));
         jLabel18.setText("NUMERO DE PAQUETES");
 
-        pesoGUI.setBackground(new java.awt.Color(255, 255, 255));
-        pesoGUI.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        pesoGUI.setForeground(new java.awt.Color(102, 102, 0));
-        pesoGUI.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "pequeño", "mediano", "grande" }));
-
         jPanel6.setBackground(new java.awt.Color(102, 102, 0));
         jPanel6.setForeground(new java.awt.Color(153, 153, 0));
 
@@ -394,6 +392,19 @@ public class frameCliente extends javax.swing.JFrame {
 
         cantidadGUI.setBackground(new java.awt.Color(255, 255, 255));
         cantidadGUI.setForeground(new java.awt.Color(0, 0, 0));
+
+        pesoGUI.setBackground(new java.awt.Color(255, 255, 255));
+        pesoGUI.setForeground(new java.awt.Color(0, 51, 51));
+        pesoGUI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getIntegerInstance())));
+
+        descCotiGUI.setBackground(new java.awt.Color(204, 204, 255));
+        descCotiGUI.setForeground(new java.awt.Color(51, 0, 51));
+        descCotiGUI.setText("DESCARGAR COTIZACION");
+        descCotiGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descCotiGUIActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -450,24 +461,26 @@ public class frameCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(82, 82, 82)
-                                            .addComponent(cotizarGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(33, 33, 33)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(pesoGUI, 0, 137, Short.MAX_VALUE)
-                                                .addComponent(cantidadGUI)))))
                                 .addComponent(destinoDepGUI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(destinoMuniGUI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(destinoDicGUI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(destinoDicGUI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(120, 120, 120)
+                                        .addComponent(cotizarGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(33, 33, 33)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(cantidadGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                                    .addComponent(pesoGUI))))
+                                        .addGap(20, 20, 20))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -486,8 +499,12 @@ public class frameCliente extends javax.swing.JFrame {
                                             .addComponent(origenMuniGUI, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(origenDicGUI))))
                                 .addGap(105, 105, 105)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(descCotiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -543,11 +560,12 @@ public class frameCliente extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -575,13 +593,15 @@ public class frameCliente extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel16)
                                     .addComponent(pesoGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cotizarGUI)
-                                .addGap(50, 50, 50))))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(45, 45, 45)))
+                        .addGap(27, 27, 27)
+                        .addComponent(descCotiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -647,6 +667,7 @@ facturacion z= new facturacion();
         /// PESO TOTAL - HACERLE IFs 
          try{ 
              cantPaquetes=Integer.parseInt(cantidadGUI.getText());
+             peso=Integer.parseInt(pesoGUI.getText());
             }
         
         catch (Exception e) {
@@ -663,15 +684,72 @@ facturacion z= new facturacion();
         z.setDestinoMuni(destinoMuni);
         z.setDestinoDir(destinoDir);
         z.setCantPaquetes(cantPaquetes);
+        z.setPeso(peso);
         
         zList.add(z);
-        JOptionPane.showMessageDialog(null, "precio de cotizacion a la derecha "+ this.z.getDestinoDep());
+        
+        if(this.z.getDestinoDep().equals("Guatemala")){
+            z.setEstandar( 25);
+            z.setEspecial(35);
+        }
+        else if (this.z.getDestinoDep().equals("Baja Verapaz")||this.z.getDestinoDep().equals("Alta Verapaz") ){
+            z.setEstandar( 45.55);
+            z.setEspecial(68.50);
+        }
+        else if(this.z.getDestinoDep().equals("El Progreso")||this.z.getDestinoDep().equals("Izabal")||this.z.getDestinoDep().equals("Zacapa")||this.z.getDestinoDep().equals("Chiquimula")){
+            z.setEstandar( 35.48);
+            z.setEspecial(56.68);
+       }
+      else if(this.z.getDestinoDep().equals("Santa Rosa")||this.z.getDestinoDep().equals("Jalapa")||this.z.getDestinoDep().equals("Jutiapa")){
+            z.setEstandar( 32.48);
+            z.setEspecial(38.68);
+       }
+      //"Solola" "Totonicapan" "Quetzaltenango" "Suchitepequez" "Retalhuleu" "San Marcos"
+      else if(this.z.getDestinoDep().equals("Solola")||this.z.getDestinoDep().equals("Totonicapan")||this.z.getDestinoDep().equals("Quetzaltenango")||this.z.getDestinoDep().equals("Suchitepequez")||this.z.getDestinoDep().equals("Retalhuleu")||this.z.getDestinoDep().equals("San Marcos")){
+            z.setEstandar( 29);
+            z.setEspecial(34);
+       }
+      else if(this.z.getDestinoDep().equals("Huehuetenango")||this.z.getDestinoDep().equals("Quiche") ){
+            z.setEstandar( 40);
+            z.setEspecial(44.50);
+   
+       }
+      else if(this.z.getDestinoDep().equals("Sacatepequez")||this.z.getDestinoDep().equals("Chimaltenango")||this.z.getDestinoDep().equals("Escuintla")){
+            z.setEstandar( 38.00);
+            z.setEspecial(41.00);
+   
+       }
+      else if(this.z.getDestinoDep().equals("Peten")){
+            z.setEstandar( 51);
+            z.setEspecial(68);
+        
+       }
+        
+        
+        totalEstandar= cantPaquetes * peso* this.z.getEstandar();
+        totalEspecial = cantPaquetes * peso * this.z.getEspecial();
+        
+        JOptionPane.showMessageDialog(null, "COTIZACION "+ "\n" + "Total Estandar:Q"+ totalEstandar + "\n" + "total especial:Q " + totalEspecial);
+        
+        
         
         
     }//GEN-LAST:event_cotizarGUIActionPerformed
 
+    private void descCotiGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descCotiGUIActionPerformed
+        
+        
+        
+        
+    }//GEN-LAST:event_descCotiGUIActionPerformed
+
     /**
+      
+       }
      
+      
+      
+        
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -709,6 +787,7 @@ facturacion z= new facturacion();
     private javax.swing.JTextField cantidadGUI;
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton cotizarGUI;
+    private javax.swing.JButton descCotiGUI;
     private javax.swing.JComboBox<String> destinoDepGUI;
     private javax.swing.JTextField destinoDicGUI;
     private javax.swing.JComboBox<String> destinoMuniGUI;
@@ -747,7 +826,7 @@ facturacion z= new facturacion();
     private javax.swing.JComboBox<String> origenDepGUI;
     private javax.swing.JTextField origenDicGUI;
     private javax.swing.JComboBox<String> origenMuniGUI;
-    private javax.swing.JComboBox<String> pesoGUI;
+    private javax.swing.JFormattedTextField pesoGUI;
     private javax.swing.JButton registrarFact;
     private javax.swing.JTextField tarjetaNomGUI;
     private javax.swing.JFormattedTextField tarjetaNumGUI;
