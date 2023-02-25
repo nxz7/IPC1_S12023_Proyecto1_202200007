@@ -452,7 +452,7 @@ private String correo, contra, nombre;
 
     private void rolGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rolGUIActionPerformed
         /*
-       PARA QUE SALGAN LOS KIOSCOS REGISTRADOS
+       
        */
         try{
             if(rolGUI.getSelectedItem().equals("KIOSCO")){
