@@ -1096,13 +1096,13 @@ facturacion z= new facturacion();
         String html = html1.toString();
 
         try {
-            File file = new File("cotizacion.html");
-            FileWriter writer = new FileWriter(file);
+            File doc = new File("cotizacion.html");
+            FileWriter writer = new FileWriter(doc);
             writer.write(html);
             writer.close();
-            Desktop.getDesktop().open(file); 
+            Desktop.getDesktop().open(doc); 
 
-            JOptionPane.showMessageDialog(null, "factura descargada!");
+            JOptionPane.showMessageDialog(null, "cotizacion descargada!");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1204,11 +1204,55 @@ facturacion z= new facturacion();
     }//GEN-LAST:event_tipoFactGUIActionPerformed
 
     private void factHTMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factHTMLActionPerformed
-        // 
-        
-        
-        
-        
+        String nombrehtml=nombreFactGUI.getSelectedItem().toString();
+        // guiaAl = codigo
+        // origen = origenDep
+        //destino= destinoDep
+        String nitHtml=jComboBox4.getSelectedItem().toString();
+        String pagoHtml= tipoPagoGUI.getSelectedItem().toString();
+        //numero = cantPaquetes 
+        //tamaño= peso 
+        String totalHtml= tipoFactGUI.getSelectedItem().toString();
+
+        try {
+            File fileName = new File("factura.html");
+            FileWriter fileWriter = new FileWriter(fileName);
+            fileWriter.write("<table class=\"body-wrap\">\n");
+                fileWriter.write("<tbody><tr>\n");
+                fileWriter.write("<td></td>\n");
+                fileWriter.write("<td class=\"container\" width=\"600\">\n");
+                fileWriter.write("<div class=\"content\">\n");
+                fileWriter.write("<table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                fileWriter.write("<tbody><tr>\n");
+                fileWriter.write("<td class=\"content-wrap aligncenter\">\n");
+                fileWriter.write("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                fileWriter.write("<tbody><tr>\n");
+                fileWriter.write("<td class=\"content-block\">\n");
+                fileWriter.write("<h2>FACTURA</h2>\n");
+                fileWriter.write("</td>\n");
+                fileWriter.write("</tr>\n");
+                fileWriter.write("<tr>\n");
+                fileWriter.write("<td class=\"content-block\">\n");
+                fileWriter.write("<table class=\"invoice\">\n");
+                fileWriter.write("<tbody><tr>\n");
+                fileWriter.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "\n");
+                fileWriter.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br> Nit: " + nitHtml + "\n");
+                fileWriter.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
+                fileWriter.write("</tr>\n");
+                fileWriter.write("<tr>\n");
+                fileWriter.write("<td>\n");
+                fileWriter.write("<table class=\"invoice-items\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                fileWriter.write("<tbody><tr>\n");
+                fileWriter.write("<td class=\"alignright\">Q " + totalHtml + "</td>\n");
+                fileWriter.write("</tr>\n");
+         
+            fileWriter.close();
+            Desktop.getDesktop().open(fileName); 
+
+            JOptionPane.showMessageDialog(null, "factura descargada!");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         
         
         
