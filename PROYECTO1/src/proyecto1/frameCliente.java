@@ -606,6 +606,11 @@ public class frameCliente extends javax.swing.JFrame {
         guiaHTML.setBackground(new java.awt.Color(153, 153, 0));
         guiaHTML.setForeground(new java.awt.Color(255, 255, 255));
         guiaHTML.setText("Guia");
+        guiaHTML.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guiaHTMLActionPerformed(evt);
+            }
+        });
 
         verEnviosGUI.setBackground(new java.awt.Color(255, 255, 255));
         verEnviosGUI.setForeground(new java.awt.Color(153, 153, 0));
@@ -1215,39 +1220,39 @@ facturacion z= new facturacion();
         String totalHtml= tipoFactGUI.getSelectedItem().toString();
 
         try {
-            File fileName = new File("factura.html");
-            FileWriter fileWriter = new FileWriter(fileName);
-            fileWriter.write("<table class=\"body-wrap\">\n");
-                fileWriter.write("<tbody><tr>\n");
-                fileWriter.write("<td></td>\n");
-                fileWriter.write("<td class=\"container\" width=\"600\">\n");
-                fileWriter.write("<div class=\"content\">\n");
-                fileWriter.write("<table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
-                fileWriter.write("<tbody><tr>\n");
-                fileWriter.write("<td class=\"content-wrap aligncenter\">\n");
-                fileWriter.write("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
-                fileWriter.write("<tbody><tr>\n");
-                fileWriter.write("<td class=\"content-block\">\n");
-                fileWriter.write("<h2>FACTURA</h2>\n");
-                fileWriter.write("</td>\n");
-                fileWriter.write("</tr>\n");
-                fileWriter.write("<tr>\n");
-                fileWriter.write("<td class=\"content-block\">\n");
-                fileWriter.write("<table class=\"invoice\">\n");
-                fileWriter.write("<tbody><tr>\n");
-                fileWriter.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "<br>\n");
-                fileWriter.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br> Nit: " + nitHtml + "\n");
-                fileWriter.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
-                fileWriter.write("</tr>\n");
-                fileWriter.write("<tr>\n");
-                fileWriter.write("<td>\n");
-                fileWriter.write("<table class=\"invoice-items\" cellpadding=\"0\" cellspacing=\"0\">\n");
-                fileWriter.write("<tbody><tr>\n");
-                fileWriter.write("<td class=\"alignright\"> TOTA A PAGAR:  " + totalHtml + "</td>\n");
-                fileWriter.write("</tr>\n");
+            File fileN = new File("factura.html");
+            FileWriter escribir = new FileWriter(fileN);
+            escribir.write("<table class=\"body-wrap\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td></td>\n");
+                escribir.write("<td class=\"container\" width=\"600\">\n");
+                escribir.write("<div class=\"content\">\n");
+                escribir.write("<table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"content-wrap aligncenter\">\n");
+                escribir.write("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"content-block\">\n");
+                escribir.write("<h2>FACTURA</h2>\n");
+                escribir.write("</td>\n");
+                escribir.write("</tr>\n");
+                escribir.write("<tr>\n");
+                escribir.write("<td class=\"content-block\">\n");
+                escribir.write("<table class=\"invoice\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "<br>\n");
+                escribir.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br> Nit: " + nitHtml + "<br>\n");
+                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
+                escribir.write("</tr>\n");
+                escribir.write("<tr>\n");
+                escribir.write("<td>\n");
+                escribir.write("<table class=\"invoice-items\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"alignright\"> TOTA A PAGAR:  " + totalHtml + "</td>\n");
+                escribir.write("</tr>\n");
          
-            fileWriter.close();
-            Desktop.getDesktop().open(fileName); 
+            escribir.close();
+            Desktop.getDesktop().open(fileN); 
 
             JOptionPane.showMessageDialog(null, "factura descargada!");
         } catch (Exception e) {
@@ -1258,6 +1263,67 @@ facturacion z= new facturacion();
         
         
     }//GEN-LAST:event_factHTMLActionPerformed
+
+    private void guiaHTMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guiaHTMLActionPerformed
+        String nombrehtml=nombreFactGUI.getSelectedItem().toString();
+        // guiaAl = codigo
+        // origen = origenDep
+        //destino= destinoDep
+        String nitHtml=jComboBox4.getSelectedItem().toString();
+        String pagoHtml= tipoPagoGUI.getSelectedItem().toString();
+        //numero = cantPaquetes 
+        //tamaño= peso 
+        String totalHtml= tipoFactGUI.getSelectedItem().toString();
+        java.util.Date fecha = new java.util.Date();
+        
+
+        try {
+            File fileN = new File("factura.html");
+            FileWriter escribir = new FileWriter(fileN);
+            escribir.write("<table class=\"body-wrap\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td></td>\n");
+                escribir.write("<td class=\"container\" width=\"600\">\n");
+                escribir.write("<div class=\"content\">\n");
+                escribir.write("<table class=\"main\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"content-wrap aligncenter\">\n");
+                escribir.write("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"content-block\">\n");
+                escribir.write("<h2> GUIA [etiqueta de envio] </h2>\n");
+                escribir.write("</td>\n");
+                escribir.write("</tr>\n");
+                escribir.write("<tr>\n");
+                escribir.write("<td class=\"content-block\">\n");
+                escribir.write("<table class=\"invoice\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br>\n");
+                escribir.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br>\n");
+                escribir.write("Fecha de envio:" + fecha + "<br>\n");
+                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
+                escribir.write("<br>\n");
+                escribir.write("</tr>\n");
+                escribir.write("<tr>\n");
+                escribir.write("<td>\n");
+                escribir.write("<table class=\"invoice-items\" cellpadding=\"0\" cellspacing=\"0\">\n");
+                escribir.write("<tbody><tr>\n");
+                escribir.write("<td class=\"alignright\"> TOTA A PAGAR:  " + totalHtml + "</td>\n");
+                escribir.write("<br>\n");
+                escribir.write("</tr>\n");
+                escribir.write("<img src=\"https://www.dynamicinventory.net/wp-content/uploads/2017/11/Barcode.jpg\" alt=\"codigo\" width=\"500\" height=\"150\">");
+         
+            escribir.close();
+            Desktop.getDesktop().open(fileN); 
+
+            JOptionPane.showMessageDialog(null, "guia descargada!");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        
+        
+    }//GEN-LAST:event_guiaHTMLActionPerformed
 
     /**
      
