@@ -1235,7 +1235,7 @@ facturacion z= new facturacion();
                 fileWriter.write("<td class=\"content-block\">\n");
                 fileWriter.write("<table class=\"invoice\">\n");
                 fileWriter.write("<tbody><tr>\n");
-                fileWriter.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "\n");
+                fileWriter.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "<br>\n");
                 fileWriter.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br> Nit: " + nitHtml + "\n");
                 fileWriter.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
                 fileWriter.write("</tr>\n");
@@ -1243,7 +1243,7 @@ facturacion z= new facturacion();
                 fileWriter.write("<td>\n");
                 fileWriter.write("<table class=\"invoice-items\" cellpadding=\"0\" cellspacing=\"0\">\n");
                 fileWriter.write("<tbody><tr>\n");
-                fileWriter.write("<td class=\"alignright\">Q " + totalHtml + "</td>\n");
+                fileWriter.write("<td class=\"alignright\"> TOTA A PAGAR:  " + totalHtml + "</td>\n");
                 fileWriter.write("</tr>\n");
          
             fileWriter.close();
