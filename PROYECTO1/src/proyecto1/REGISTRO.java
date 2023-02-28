@@ -1,9 +1,14 @@
 
 package proyecto1;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author natalia
@@ -62,8 +67,8 @@ private String correo, contra, nombre;
         jLabel13 = new javax.swing.JLabel();
         nombreGUI = new javax.swing.JTextField();
         apellido = new javax.swing.JTextField();
-        dpi = new javax.swing.JPasswordField();
-        alias = new javax.swing.JTextField();
+        dpiGUI = new javax.swing.JPasswordField();
+        aliasGUI = new javax.swing.JTextField();
         telefono = new javax.swing.JTextField();
         nacionalidad = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
@@ -75,6 +80,8 @@ private String correo, contra, nombre;
         botonRegMenu = new javax.swing.JButton();
         rolGUI = new javax.swing.JComboBox<>();
         kioscoElegir = new javax.swing.JComboBox<>();
+        fotoLabel = new javax.swing.JLabel();
+        subirFoto = new javax.swing.JButton();
 
         jLabel2.setBackground(new java.awt.Color(103, 89, 78));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
@@ -220,6 +227,15 @@ private String correo, contra, nombre;
             }
         });
 
+        subirFoto.setBackground(new java.awt.Color(153, 153, 0));
+        subirFoto.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        subirFoto.setText("subir foto");
+        subirFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subirFotoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -232,8 +248,7 @@ private String correo, contra, nombre;
                         .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -265,14 +280,14 @@ private String correo, contra, nombre;
                                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(6, 6, 6)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(alias, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(aliasGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                                 .addComponent(F, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(M, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(dpi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(dpiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jRadioButton2))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -285,6 +300,9 @@ private String correo, contra, nombre;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(botonRegMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
                                 .addComponent(correoGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,9 +310,13 @@ private String correo, contra, nombre;
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(nombreGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(botonRegMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(subirFoto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(48, 48, 48)
+                                .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,12 +348,10 @@ private String correo, contra, nombre;
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(contraGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dpi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dpiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                    .addComponent(nacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -343,7 +363,7 @@ private String correo, contra, nombre;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
-                            .addComponent(alias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aliasGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -351,15 +371,20 @@ private String correo, contra, nombre;
                             .addComponent(jLabel12)
                             .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(rolGUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(kioscoElegir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                            .addComponent(kioscoElegir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(58, 58, 58))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(subirFoto))))
+                    .addComponent(fotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -372,10 +397,7 @@ private String correo, contra, nombre;
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -414,27 +436,47 @@ private String correo, contra, nombre;
         a.setCorreo(correo);
         a.setContra(contra);
         a.setRol(rol);
-        if (contraGUI.getText() == null || correoGUI.getText() == null || nombreGUI.getText() == null || apellido.getText() == null || dpi.getText() == null || alias.getText() == null || telefono.getText() == null || nacimiento.getDate() == null) {
+        
+        
+            
+        if (contraGUI.getText() == null || correoGUI.getText() == null || nombreGUI.getText() == null || apellido.getText() == null || dpiGUI.getText() == null || aliasGUI.getText() == null || telefono.getText() == null || nacimiento.getDate() == null) {
           JOptionPane.showMessageDialog(null, "POR FAVOR LLENAR TODOS LOS DATOS");
-              }
-        if (!specailCharPatten.matcher(contraGUI.getText()).find()) {
-        JOptionPane.showMessageDialog(null, "Contrseña debe contener un caracter especial");
-         }
-         if (!UpperCasePatten.matcher(contraGUI.getText()).find()) {
-        JOptionPane.showMessageDialog(null, "Contrseña debe contener MAYUSCULAS");
-         }
-         if (!lowerCasePatten.matcher(contraGUI.getText()).find()) {
-        JOptionPane.showMessageDialog(null, "Contrseña debe contener minusculas");
-         }
-         if (!digitCasePatten.matcher(contraGUI.getText()).find()) {
-        JOptionPane.showMessageDialog(null, "Contrseña debe contener numeros !!! ");
-          }
-        
-        else{
-            aList.add(a);
+          
+              
         }
+        else if (!specailCharPatten.matcher(contraGUI.getText()).find()) {
+              JOptionPane.showMessageDialog(null, "Contrseña debe contener un caracter especial");
+              
+         }
+        else if (!UpperCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener MAYUSCULAS");
         
-        // se agrega al arreglo
+         }
+        else if (!lowerCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener minusculas");
+        
+         }
+        
+        else if (!digitCasePatten.matcher(contraGUI.getText()).find()) {
+        JOptionPane.showMessageDialog(null, "Contrseña debe contener numeros !!! ");
+        
+          }
+      
+        else {
+            JOptionPane.showMessageDialog(null, "Usuario Creado! ");
+            aList.add(a);
+            
+            // se regresan los espacios vacios
+             correoGUI.setText("");
+             contraGUI.setText("");
+             nombreGUI.setText("");
+             apellido.setText("");
+            dpiGUI.setText("");
+             aliasGUI.setText("");
+            telefono.setText("");
+        
+        }
+          
         
     }//GEN-LAST:event_registrarActionPerformed
     //public ArrayList <clienteArreglo> getAList(){ return aList; }
@@ -471,6 +513,23 @@ private String correo, contra, nombre;
            System.out.println(e);
                 }
     }//GEN-LAST:event_rolGUIActionPerformed
+
+    private void subirFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subirFotoActionPerformed
+        // la foto
+        JFileChooser buscarfoto = new JFileChooser();
+        // para que solo acepte imagenes
+        FileNameExtensionFilter soloFoto = new FileNameExtensionFilter("imagen", "png", "jpg", "jpeg");
+        buscarfoto.addChoosableFileFilter(soloFoto);
+        int showOpenDialogue = buscarfoto.showOpenDialog(null);
+        if(showOpenDialogue == JFileChooser.APPROVE_OPTION){
+            File fotoElegida = buscarfoto.getSelectedFile();
+            String fotoElegidaP  = fotoElegida.getAbsolutePath();
+            //JOptionPane.showMessageDialog(null, fotoElegidaP);
+            ImageIcon elegida = new ImageIcon(fotoElegidaP);
+            Image image= elegida.getImage().getScaledInstance(fotoLabel.getWidth(), fotoLabel.getHeight(),Image.SCALE_SMOOTH );
+            fotoLabel.setIcon(new ImageIcon(image));
+        }
+    }//GEN-LAST:event_subirFotoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -510,12 +569,13 @@ private String correo, contra, nombre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton F;
     private javax.swing.JRadioButton M;
-    private javax.swing.JTextField alias;
+    private javax.swing.JTextField aliasGUI;
     private javax.swing.JTextField apellido;
     private javax.swing.JButton botonRegMenu;
     private javax.swing.JPasswordField contraGUI;
     private javax.swing.JTextField correoGUI;
-    private javax.swing.JPasswordField dpi;
+    private javax.swing.JPasswordField dpiGUI;
+    private javax.swing.JLabel fotoLabel;
     private javax.swing.ButtonGroup genero;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -542,6 +602,7 @@ private String correo, contra, nombre;
     private javax.swing.JTextField nombreGUI;
     private javax.swing.JButton registrar;
     private javax.swing.JComboBox<String> rolGUI;
+    private javax.swing.JButton subirFoto;
     private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

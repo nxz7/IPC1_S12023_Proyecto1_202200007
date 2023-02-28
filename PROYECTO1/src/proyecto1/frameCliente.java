@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package proyecto1;
 
 import java.awt.Desktop;
@@ -11,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author natalia
  */
 public class frameCliente extends javax.swing.JFrame {
@@ -19,9 +15,13 @@ public class frameCliente extends javax.swing.JFrame {
     public static ArrayList <clienteArreglo> aList;
     public static ArrayList <registroArreglos> bList;
     public static ArrayList <facturacion> zList;
+    public static ArrayList <envioSol> gList;
     
     private String tarjetaNombre, tarjetaNum, nombreCompleto, direccion,contraEntrega, nitF, origenMuni, origenDir, origenDep, destinoDep, destinoMuni, destinoDir;
-    
+    private String cod, tipTot, dest, tipoP;
+
+            
+            
 
     private int cantPaquetes, peso; 
     private double estandar, especial, totalEstandar, totalEspecial;
@@ -32,6 +32,11 @@ public class frameCliente extends javax.swing.JFrame {
         this.bList = PROYECTO1.bList;
         this.aList = PROYECTO1.aList;
         this.zList = PROYECTO1.zList;
+        this.gList =PROYECTO1.gList;
+        cod = "";
+        tipTot = "";
+        dest = "";
+        tipoP="";
         tarjetaNombre = "";
         tarjetaNum = "";
         nombreCompleto = "";
@@ -81,6 +86,9 @@ public class frameCliente extends javax.swing.JFrame {
         
     }
  public static ArrayList<String> guiaGen = new ArrayList<String>();
+ //----
+ 
+
     /**
    
      */
@@ -615,6 +623,11 @@ public class frameCliente extends javax.swing.JFrame {
         verEnviosGUI.setBackground(new java.awt.Color(255, 255, 255));
         verEnviosGUI.setForeground(new java.awt.Color(153, 153, 0));
         verEnviosGUI.setText("ver envios");
+        verEnviosGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verEnviosGUIActionPerformed(evt);
+            }
+        });
 
         jPanel9.setBackground(new java.awt.Color(102, 102, 0));
         jPanel9.setForeground(new java.awt.Color(102, 102, 0));
@@ -968,6 +981,7 @@ public class frameCliente extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_cerrarSesionActionPerformed
 facturacion z= new facturacion();
+
     private void registrarFactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarFactActionPerformed
         //tarjetaNombre = tarjetaNomGUI.getText();
        // tarjetaNum =tarjetaNumGUI.getText();
@@ -1090,7 +1104,7 @@ facturacion z= new facturacion();
 
         double totalesHTML= totalEstandar;
         double totalespHTML=totalEspecial;
-        html1.append("nombre:" +  nombreCompleto + "<br>");
+        
         html1.append("destino:" + destinoMuni + ", " + destinoDep + "<br>");
             
         html1.append("total estandar: Q" + totalesHTML+ "<br>");
@@ -1167,8 +1181,13 @@ facturacion z= new facturacion();
        
     }//GEN-LAST:event_nombreFactGUIActionPerformed
 
+    
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        String guiaAl;
+       String mostrarTot;
        // para verificar que no exista y genrar la guia
         do{
         StringBuilder guia = new StringBuilder();
@@ -1185,11 +1204,27 @@ facturacion z= new facturacion();
         }while(guiaGen.contains(guiaAl));
         guiaGen.add(guiaAl);
         
-        String mostrarTot= tipoFactGUI.getSelectedItem().toString();
+        mostrarTot= tipoFactGUI.getSelectedItem().toString();
 
+        envioSol g = new envioSol();
         
         numeroFact++;
-        muestraGUI.setText("Guia:  "+ guiaAl + "\n" + mostrarTot + "\n" + numeroFact);
+        muestraGUI.setText("Guia:  "+ guiaAl + "\n" + mostrarTot + "\n");
+        
+        cod= guiaGen.get(numeroFact -1);
+        tipTot = tipoFactGUI.getSelectedItem().toString();
+        tipoP = tipoPagoGUI.getSelectedItem().toString();
+        dest = destinoDepGUI.getSelectedItem().toString();
+        
+        g.setCod(cod);
+        g.setTipTot( tipTot);
+        g.setTipoP(tipoP);
+        g.setDest(dest);
+        
+        gList.add(g);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
@@ -1240,9 +1275,9 @@ facturacion z= new facturacion();
                 escribir.write("<td class=\"content-block\">\n");
                 escribir.write("<table class=\"invoice\">\n");
                 escribir.write("<tbody><tr>\n");
-                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br> Numero de factura" + numeroFact + "<br>\n");
-                escribir.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br> Nit: " + nitHtml + "<br>\n");
-                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
+                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen.get(numeroFact -1) + "<br> Numero de factura" + numeroFact + "<br>\n");
+                escribir.write("Origen:" + origenDepGUI.getSelectedItem().toString() + "<br> Destino: " + destinoDepGUI.getSelectedItem().toString() + "<br> Nit: " + nitHtml + "<br>\n");
+                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + pesoGUI.getText()  + "(lb) <br> Numero de paquetes:" + cantidadGUI.getText() + "</td>\n");
                 escribir.write("</tr>\n");
                 escribir.write("<tr>\n");
                 escribir.write("<td>\n");
@@ -1298,10 +1333,10 @@ facturacion z= new facturacion();
                 escribir.write("<td class=\"content-block\">\n");
                 escribir.write("<table class=\"invoice\">\n");
                 escribir.write("<tbody><tr>\n");
-                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen + "<br>\n");
-                escribir.write("Origen:" + origenDep + "<br> Destino: " + destinoDep + "<br>\n");
+                escribir.write( "Nombre: " + nombrehtml + "<br> Codigo de paquete #" + guiaGen.get(numeroFact -1) + "<br>\n");
+                escribir.write("Origen:" + origenDepGUI.getSelectedItem().toString() + "<br> Destino: " + destinoDepGUI.getSelectedItem().toString() + "<br>\n");
                 escribir.write("Fecha de envio:" + fecha + "<br>\n");
-                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + peso  + "(lb) <br> Numero de paquetes:" + cantPaquetes + "</td>\n");
+                escribir.write("<td> Tipo de pago: " + pagoHtml + "<br> Tamaño: " + pesoGUI.getText()  + "(lb) <br> Numero de paquetes:" + cantidadGUI.getText() + "</td>\n");
                 escribir.write("<br>\n");
                 escribir.write("</tr>\n");
                 escribir.write("<tr>\n");
@@ -1324,6 +1359,12 @@ facturacion z= new facturacion();
         
         
     }//GEN-LAST:event_guiaHTMLActionPerformed
+
+    private void verEnviosGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verEnviosGUIActionPerformed
+        dispose();
+        enviosSolicitados pi = new enviosSolicitados();
+        pi.setVisible(true);
+    }//GEN-LAST:event_verEnviosGUIActionPerformed
 
     /**
      

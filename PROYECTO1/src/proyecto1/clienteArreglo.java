@@ -3,7 +3,7 @@
         
  */
 package proyecto1;
-import java.util.ArrayList;
+
 
 public class clienteArreglo {
     private String correo;
