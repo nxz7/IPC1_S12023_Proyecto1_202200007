@@ -34,8 +34,6 @@ public class facturacion {
     private double totalEspecial;
 
     
-    private int totalPaquetes;
-    private double totalIngresos;
     
     
     public facturacion(){
@@ -60,26 +58,11 @@ public class facturacion {
         totalEstandar=0;
         totalEspecial=0;
         
-        totalIngresos = 0;
-        totalPaquetes =0;
+       
         
     }
     
-    public int getTotalPaquetes() {
-        return totalPaquetes;
-    }
-
-    public void setTotalPaquetes(int totalPaquetes) {
-        this.totalPaquetes = totalPaquetes;
-    }
-
-    public double getTotalIngresos() {
-        return totalIngresos;
-    }
-
-    public void setTotalIngresos(double totalIngresos) {
-        this.totalIngresos = totalIngresos;
-    }
+    
 
     public String getOrigenDep() {
         return origenDep;

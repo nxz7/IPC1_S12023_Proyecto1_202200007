@@ -20,11 +20,12 @@ public class frameCliente extends javax.swing.JFrame {
     private String tarjetaNombre, tarjetaNum, nombreCompleto, direccion,contraEntrega, nitF, origenMuni, origenDir, origenDep, destinoDep, destinoMuni, destinoDir;
     private String cod, tipTot, dest, tipoP;
 
-            
+    private static int paquetesrep=0;
+    private static int ingresosrep=0;
             
 
-    private int cantPaquetes, peso,totalPaquetes; 
-    private double estandar, especial, totalEstandar, totalEspecial,totalIngresos;
+    private int cantPaquetes, peso; 
+    private double estandar, especial, totalEstandar, totalEspecial;
     public static int numeroFact;
 
     
@@ -86,6 +87,23 @@ public class frameCliente extends javax.swing.JFrame {
         
         
     }
+    
+    public static void addPaquetesRep(int cant1) {
+        paquetesrep += cant1;
+    }
+
+    public static int getPaquetesRep() {
+        return paquetesrep;
+    }
+    
+    public static void addIngrespsRep(double cant2) {
+        ingresosrep += cant2;
+    }
+
+    public static double getIngrespsRep() {
+        return ingresosrep;
+    }
+    
  public static ArrayList<String> guiaGen = new ArrayList<String>();
  //----
  
@@ -1224,21 +1242,23 @@ facturacion z= new facturacion();
         
         gList.add(g);
         
-         
+        int cant1 =Integer.parseInt(cantidadGUI.getText());
+        frameCliente.addPaquetesRep(cant1);
+        
         if(mostrarTot.indexOf("Estandar: Q")>-1){
-        totalIngresos = totalIngresos + totalEstandar;
+        double cant2 = totalEstandar;
+        frameCliente.addIngrespsRep(cant2);
         }
-        else { totalIngresos = totalIngresos + totalEspecial;
+        else { double cant2= totalEspecial;
+        frameCliente.addIngrespsRep(cant2);
                 }
         
-        totalPaquetes = totalPaquetes + Integer.parseInt(cantidadGUI.getText());
         
-        z.setTotalIngresos(totalIngresos);
-        z.setTotalPaquetes(totalPaquetes);
-        zList.add(z);
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     
     
     

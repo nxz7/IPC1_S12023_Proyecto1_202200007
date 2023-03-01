@@ -10,17 +10,16 @@ import javax.swing.JOptionPane;
  */
 public class ADMINISTRADOR extends javax.swing.JFrame {
    ArrayList <registroArreglos> bList = new ArrayList<>();
-   public static ArrayList <facturacion> zList;
+   
    private String kioscoNom, kioscoCod, codReg, region,estandar,especial,depNom,depRegion,muniNombre;
-   private int totalPaquetes;
-   private double totalIngresos;
+   
 
     
     public ADMINISTRADOR() {
         
         initComponents();
         this.bList = PROYECTO1.bList;
-        this.zList = PROYECTO1.zList;
+        //this.zList = PROYECTO1.zList;
         kioscoNom = "";
         kioscoCod = "";
         codReg = "";
@@ -32,10 +31,15 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         
         muniNombre="";
         dep.setSelectedItem(null);
-        ingresosTotalesGUI.setText(" 0" );
-        totalPaquetesGUI.setText("0 ");
+       /* ingresosTotalesGUI.setText(" 0" );
+        totalPaquetesGUI.setText("0 "); */
     }
-    
+    public static int getPaquetesRep() {
+        return frameCliente.getPaquetesRep();
+    }
+    public static double getIngresosRep() {
+        return frameCliente.getIngrespsRep();
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -492,9 +496,11 @@ catch (Exception e) {
     }//GEN-LAST:event_ingresosTotalesGUIActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try{
-        ingresosTotalesGUI.setText("Q  "+ this.zList.get(zList.size()-1).getTotalIngresos() );
-        totalPaquetesGUI.setText(" "+ this.zList.get(zList.size()-1).getTotalPaquetes());}
+       try{
+        
+        totalPaquetesGUI.setText("  "+ Integer.toString(ADMINISTRADOR.getPaquetesRep()));
+       ingresosTotalesGUI.setText("Q "+ Double.toString(ADMINISTRADOR.getIngresosRep()));}
+        
         catch (Exception e) {
            System.out.println(e);
                 }
