@@ -23,9 +23,10 @@ public class frameCliente extends javax.swing.JFrame {
             
             
 
-    private int cantPaquetes, peso; 
-    private double estandar, especial, totalEstandar, totalEspecial;
+    private int cantPaquetes, peso,totalPaquetes; 
+    private double estandar, especial, totalEstandar, totalEspecial,totalIngresos;
     public static int numeroFact;
+
     
     public frameCliente() {
         initComponents();
@@ -1223,10 +1224,25 @@ facturacion z= new facturacion();
         
         gList.add(g);
         
+         
+        if(mostrarTot.indexOf("Estandar: Q")>-1){
+        totalIngresos = totalIngresos + totalEstandar;
+        }
+        else { totalIngresos = totalIngresos + totalEspecial;
+                }
         
+        totalPaquetes = totalPaquetes + Integer.parseInt(cantidadGUI.getText());
+        
+        z.setTotalIngresos(totalIngresos);
+        z.setTotalPaquetes(totalPaquetes);
+        zList.add(z);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    
+    
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         
                 

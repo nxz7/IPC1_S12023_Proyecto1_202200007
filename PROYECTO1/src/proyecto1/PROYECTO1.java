@@ -13,6 +13,9 @@ public class PROYECTO1 {
     
     
     public static int numeroFact= 0;
+    
+    
+    
     public static void main(String[] args) {
         
         // ArrayList <clienteArreglo> aList = new ArrayList<>();

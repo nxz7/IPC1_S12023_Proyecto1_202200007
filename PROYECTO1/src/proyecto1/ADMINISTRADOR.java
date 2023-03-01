@@ -10,15 +10,17 @@ import javax.swing.JOptionPane;
  */
 public class ADMINISTRADOR extends javax.swing.JFrame {
    ArrayList <registroArreglos> bList = new ArrayList<>();
+   public static ArrayList <facturacion> zList;
    private String kioscoNom, kioscoCod, codReg, region,estandar,especial,depNom,depRegion,muniNombre;
+   private int totalPaquetes;
+   private double totalIngresos;
 
-    /**
-     * Creates new form ADMINISTRADOR
-     */
+    
     public ADMINISTRADOR() {
         
         initComponents();
         this.bList = PROYECTO1.bList;
+        this.zList = PROYECTO1.zList;
         kioscoNom = "";
         kioscoCod = "";
         codReg = "";
@@ -30,6 +32,8 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         
         muniNombre="";
         dep.setSelectedItem(null);
+        ingresosTotalesGUI.setText(" 0" );
+        totalPaquetesGUI.setText("0 ");
     }
     
     
@@ -62,6 +66,13 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         kioscoCodigo = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        ingresosTotalesGUI = new javax.swing.JTextField();
+        totalPaquetesGUI = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botonAdmiMenu = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -218,20 +229,84 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(109, 80, 2));
         jLabel4.setText("REPORTE");
 
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 0));
+        jLabel13.setText("Ingresos totales");
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 0));
+        jLabel14.setText("Paquetes enviados");
+
+        ingresosTotalesGUI.setBackground(new java.awt.Color(255, 255, 255));
+        ingresosTotalesGUI.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        ingresosTotalesGUI.setForeground(new java.awt.Color(0, 153, 51));
+        ingresosTotalesGUI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresosTotalesGUIActionPerformed(evt);
+            }
+        });
+
+        totalPaquetesGUI.setBackground(new java.awt.Color(255, 255, 255));
+        totalPaquetesGUI.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        totalPaquetesGUI.setForeground(new java.awt.Color(102, 102, 0));
+
+        jButton2.setBackground(new java.awt.Color(194, 232, 214));
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("regiones con mas envios");
+
+        jButton3.setBackground(new java.awt.Color(181, 225, 201));
+        jButton3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("usuarios con mas envios");
+
+        jButton4.setText("reporte de ingresos y envios");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(totalPaquetesGUI, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ingresosTotalesGUI, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ingresosTotalesGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(totalPaquetesGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap())
         );
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -412,6 +487,19 @@ catch (Exception e) {
         pi.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void ingresosTotalesGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresosTotalesGUIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingresosTotalesGUIActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try{
+        ingresosTotalesGUI.setText("Q  "+ this.zList.get(zList.size()-1).getTotalIngresos() );
+        totalPaquetesGUI.setText(" "+ this.zList.get(zList.size()-1).getTotalPaquetes());}
+        catch (Exception e) {
+           System.out.println(e);
+                }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * 
      * @param args the command line arguments
@@ -453,11 +541,17 @@ catch (Exception e) {
     private javax.swing.JButton botonAdmiMenu;
     private javax.swing.JButton botonKiosco;
     private javax.swing.JComboBox<String> dep;
+    private javax.swing.JTextField ingresosTotalesGUI;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -472,5 +566,6 @@ catch (Exception e) {
     private javax.swing.JTextField kioscoCodigo;
     private javax.swing.JTextField kioscoNombre;
     private javax.swing.JTextField muniNom;
+    private javax.swing.JTextField totalPaquetesGUI;
     // End of variables declaration//GEN-END:variables
 }
