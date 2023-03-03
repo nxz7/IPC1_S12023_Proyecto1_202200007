@@ -51,15 +51,7 @@ public  ArrayList <reporteA> repList;
         
         for (Par par1:result) {
             System.out.println(par1.getStringValue() + ": " + par1.getIntValue());
-            /*DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-            Object rowData[]= new Object[2];
             
-     for(int i=0; i<result.size(); i++){
-         rowData[0]=par1.getStringValue();
-         rowData[1]=par1.getIntValue();
-         model.addRow(rowData);
-     
-     }*/
         }
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         //DefaultTableModel model = new DefaultTableModel(new Object[]{"String", "Int"}, 0);

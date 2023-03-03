@@ -1027,7 +1027,7 @@ public class frameCliente extends javax.swing.JFrame {
         for (int i = 0; i < this.repList.size(); i++) {
             if(this.repList.get(i).getCorreoA().equals(correo2)){
                 this.repList.get(i).setPaquetesA(paquetesA);
-                JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " + this.repList.get(i).getPaquetesA()+this.repList.get(i).getCorreoA() );
+                JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " );
                 
     
             }
