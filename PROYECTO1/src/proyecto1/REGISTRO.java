@@ -422,6 +422,7 @@ private String correo, contra, nombre;
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         // BOTON DE REGISTRAR AL NUEVO CLIENTE  > Cliente > almacenar en arrayList
         Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        
     Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
     Pattern lowerCasePatten = Pattern.compile("[a-z ]");
     Pattern digitCasePatten = Pattern.compile("[0-9 ]");

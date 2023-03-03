@@ -12,6 +12,11 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
    ArrayList <registroArreglos> bList = new ArrayList<>();
    
    private String kioscoNom, kioscoCod, codReg, region,estandar,especial,depNom,depRegion,muniNombre;
+   public  ArrayList <reporteA> repList;
+
+private String correoA;
+private static int paquetesA;
+
    
 
     
@@ -19,6 +24,7 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         
         initComponents();
         this.bList = PROYECTO1.bList;
+        this.repList= PROYECTO1.repList;
         //this.zList = PROYECTO1.zList;
         kioscoNom = "";
         kioscoCod = "";
@@ -41,6 +47,7 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         return frameCliente.getIngrespsRep();
     }
     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -264,6 +271,11 @@ public class ADMINISTRADOR extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("usuarios con mas envios");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("reporte de ingresos y envios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -505,6 +517,13 @@ catch (Exception e) {
            System.out.println(e);
                 }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JOptionPane.showMessageDialog(null, " cant "+ this.repList.get(0).getPaquetesA()+ this.repList.get(0).getCorreoA());
+        dispose();
+        repLista pi = new repLista();
+        pi.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * 

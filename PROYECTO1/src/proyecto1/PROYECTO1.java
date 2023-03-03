@@ -11,6 +11,7 @@ public class PROYECTO1 {
     public static ArrayList <facturacion> zList = new ArrayList<>();
     public static ArrayList <envioSol> gList = new ArrayList<>();
     
+    public static ArrayList <reporteA> repList = new ArrayList<>();
     
     public static int numeroFact= 0;
     

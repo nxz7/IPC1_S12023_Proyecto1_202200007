@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+//import static proyecto1.MenuPrincipal.repList;
 
 /**
  * @author natalia
@@ -17,6 +18,13 @@ public class frameCliente extends javax.swing.JFrame {
     public static ArrayList <facturacion> zList;
     public static ArrayList <envioSol> gList;
     
+    
+    public  ArrayList <reporteA> repList;
+    
+    public String correo2;
+    //private static int paquetesA;
+    private int paquetesA;
+    
     private String tarjetaNombre, tarjetaNum, nombreCompleto, direccion,contraEntrega, nitF, origenMuni, origenDir, origenDep, destinoDep, destinoMuni, destinoDir;
     private String cod, tipTot, dest, tipoP;
 
@@ -27,7 +35,8 @@ public class frameCliente extends javax.swing.JFrame {
     private int cantPaquetes, peso; 
     private double estandar, especial, totalEstandar, totalEspecial;
     public static int numeroFact;
-
+    
+    
     
     public frameCliente() {
         initComponents();
@@ -35,6 +44,8 @@ public class frameCliente extends javax.swing.JFrame {
         this.aList = PROYECTO1.aList;
         this.zList = PROYECTO1.zList;
         this.gList =PROYECTO1.gList;
+        this.repList= PROYECTO1.repList;
+        
         cod = "";
         tipTot = "";
         dest = "";
@@ -51,6 +62,7 @@ public class frameCliente extends javax.swing.JFrame {
         destinoDep = "";
         destinoMuni = "";
         destinoDir = "";
+        paquetesA=0;
         
         boolean vic = true;
         ///// ARREGLAR REPETIDOS 
@@ -88,6 +100,11 @@ public class frameCliente extends javax.swing.JFrame {
         
     }
     
+    public void recibirCorreo(String correo2){
+        this.correo2=correo2;
+        System.out.println(""+correo2);
+    }
+    
     public static void addPaquetesRep(int cant1) {
         paquetesrep += cant1;
     }
@@ -103,6 +120,14 @@ public class frameCliente extends javax.swing.JFrame {
     public static double getIngrespsRep() {
         return ingresosrep;
     }
+    
+    /*public void addPaquetesA(int cant5) {
+        paquetesA += cant5;
+    }*/
+    
+    /*public static int getPaquetesA() {
+        return frameCliente.getPaquetesA();
+    }*/
     
  public static ArrayList<String> guiaGen = new ArrayList<String>();
  //----
@@ -998,6 +1023,35 @@ public class frameCliente extends javax.swing.JFrame {
         dispose();
         MenuPrincipal p = new MenuPrincipal();
         p.setVisible(true);
+        System.out.println("BOTON PAQUETES2:"+ paquetesA);
+        for (int i = 0; i < this.repList.size(); i++) {
+            if(this.repList.get(i).getCorreoA().equals(correo2)){
+                this.repList.get(i).setPaquetesA(paquetesA);
+                JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " + this.repList.get(i).getPaquetesA()+this.repList.get(i).getCorreoA() );
+                
+    
+            }
+            System.out.println("BOTON PAQUETES3:"+ paquetesA);
+            System.out.println("" + this.repList.get(i).getPaquetesA() + "--"+ this.repList.get(i).getCorreoA());
+            
+        }
+        
+        //reporteA rep = new reporteA();
+        
+        
+        /*
+        paquetesA=frameCliente.getPaquetesA();
+        rep.setPaquetesA(paquetesA);
+        repList.add(rep);
+        
+        System.out.println(this.repList.get(0).getPaquetesA());
+        
+        */
+        
+        
+        
+        
+        
     }//GEN-LAST:event_cerrarSesionActionPerformed
 facturacion z= new facturacion();
 
@@ -1021,7 +1075,7 @@ facturacion z= new facturacion();
         jComboBox4.addItem(z.getNitF());
         nombreFactGUI.addItem(z.getNombreCompleto());
          
-        JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS ");
+        JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " );
         
         
         
@@ -1154,7 +1208,7 @@ facturacion z= new facturacion();
         z.setTarjetaNombre(tarjetaNombre);
         z.setTarjetaNum(tarjetaNum);
         zList.add(z);
-        JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS ");
+        JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS" );
         String zgy = z.getTarjetaNum();
         String remp = "XXXXXXXXXXXX";
         String primDoce = "^.{12}";
@@ -1204,8 +1258,10 @@ facturacion z= new facturacion();
     
     
     
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       String guiaAl;
+       
+        String guiaAl;
        String mostrarTot;
        // para verificar que no exista y genrar la guia
         do{
@@ -1243,6 +1299,13 @@ facturacion z= new facturacion();
         gList.add(g);
         
         int cant1 =Integer.parseInt(cantidadGUI.getText());
+        int cant5 = Integer.parseInt(cantidadGUI.getText());
+        
+        paquetesA= paquetesA + cant5;
+        System.out.println("BOTON PAQUETES1:"+ paquetesA);
+        
+        
+
         frameCliente.addPaquetesRep(cant1);
         
         if(mostrarTot.indexOf("Estandar: Q")>-1){
@@ -1251,7 +1314,11 @@ facturacion z= new facturacion();
         }
         else { double cant2= totalEspecial;
         frameCliente.addIngrespsRep(cant2);
+        
+             
                 }
+        
+        
         
         
         
