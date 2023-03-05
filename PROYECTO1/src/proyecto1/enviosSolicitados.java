@@ -12,13 +12,17 @@ import javax.swing.table.DefaultTableModel;
  * @author natalia
  */
 public class enviosSolicitados extends javax.swing.JFrame {
-    public static ArrayList <envioSol> gList;
+    public  ArrayList <envioSol> gList;
+    //public  ArrayList <reporteA> repList;
     private String cod, tipTot, dest, tipoP;
+    //public String correo2;
     
+    //this.repList= PROYECTO1.repList; - public  ArrayList <reporteA> repList;
     public enviosSolicitados() {
         initComponents();
         this.gList =PROYECTO1.gList;
-        agregarFila();
+        
+        agregarFila();  
         
     }
     
@@ -36,7 +40,9 @@ public class enviosSolicitados extends javax.swing.JFrame {
    
     }
     
-    
+    /*
+    ---------------------------------------------
+    */
     
     
     

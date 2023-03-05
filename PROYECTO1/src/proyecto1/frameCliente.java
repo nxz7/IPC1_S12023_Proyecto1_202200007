@@ -18,11 +18,15 @@ public class frameCliente extends javax.swing.JFrame {
     public static ArrayList <facturacion> zList;
     public static ArrayList <envioSol> gList;
     
+    public String[] regContador;
+    public int[] regNum;
     
     public  ArrayList <reporteA> repList;
+
+    
     
     public String correo2;
-    //private static int paquetesA;
+    
     private int paquetesA;
     
     private String tarjetaNombre, tarjetaNum, nombreCompleto, direccion,contraEntrega, nitF, origenMuni, origenDir, origenDep, destinoDep, destinoMuni, destinoDir;
@@ -45,7 +49,8 @@ public class frameCliente extends javax.swing.JFrame {
         this.zList = PROYECTO1.zList;
         this.gList =PROYECTO1.gList;
         this.repList= PROYECTO1.repList;
-        
+        this.regContador=PROYECTO1.regContador;
+        this.regNum=PROYECTO1.regNum;
         cod = "";
         tipTot = "";
         dest = "";
@@ -104,6 +109,9 @@ public class frameCliente extends javax.swing.JFrame {
         this.correo2=correo2;
         System.out.println(""+correo2);
     }
+    /*public String getCorreo2() {
+        return correo2;
+    }*/
     
     public static void addPaquetesRep(int cant1) {
         paquetesrep += cant1;
@@ -779,6 +787,10 @@ public class frameCliente extends javax.swing.JFrame {
                                                     .addComponent(cantidadGUI, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                                     .addComponent(pesoGUI))))
                                         .addGap(20, 20, 20))))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(descCotiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -797,11 +809,7 @@ public class frameCliente extends javax.swing.JFrame {
                                             .addComponent(origenMuniGUI, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(origenDicGUI))))
                                 .addGap(105, 105, 105)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(descCotiGUI, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1077,7 +1085,9 @@ facturacion z= new facturacion();
          
         JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " );
         
-        
+        nomCompletoGUI.setText("");
+        direccionGUI.setText("");
+        nitFGUI.setText("");
         
         
         
@@ -1110,7 +1120,8 @@ facturacion z= new facturacion();
            JOptionPane.showMessageDialog(null, "INTRESE UN NUMERO");
                 }
        
-        
+        /*static String[] regContador = new String[8]; /// nombre
+    static int[] regNum = new int[8];*/
         
         z.setOrigenDep(origenDep);
         z.setOrigenMuni(origenMuni);
@@ -1126,37 +1137,54 @@ facturacion z= new facturacion();
         if(this.z.getDestinoDep().equals("Guatemala")){
             z.setEstandar( 25);
             z.setEspecial(35);
+            regContador[0]="Metropolitana";
+            regNum[0]=regNum[0]+1;
+            
         }
         else if (this.z.getDestinoDep().equals("Baja Verapaz")||this.z.getDestinoDep().equals("Alta Verapaz") ){
             z.setEstandar( 45.55);
             z.setEspecial(68.50);
+            regContador[1]="Norte";
+            regNum[1]=regNum[1]+1;
         }
         else if(this.z.getDestinoDep().equals("El Progreso")||this.z.getDestinoDep().equals("Izabal")||this.z.getDestinoDep().equals("Zacapa")||this.z.getDestinoDep().equals("Chiquimula")){
             z.setEstandar( 35.48);
             z.setEspecial(56.68);
+            regContador[2]="Nororiente";
+            regNum[2]=regNum[2]+1;
        }
       else if(this.z.getDestinoDep().equals("Santa Rosa")||this.z.getDestinoDep().equals("Jalapa")||this.z.getDestinoDep().equals("Jutiapa")){
             z.setEstandar( 32.48);
             z.setEspecial(38.68);
+            regContador[3]="Suroriente";
+            regNum[3]=regNum[3]+1;
        }
       //"Solola" "Totonicapan" "Quetzaltenango" "Suchitepequez" "Retalhuleu" "San Marcos"
       else if(this.z.getDestinoDep().equals("Solola")||this.z.getDestinoDep().equals("Totonicapan")||this.z.getDestinoDep().equals("Quetzaltenango")||this.z.getDestinoDep().equals("Suchitepequez")||this.z.getDestinoDep().equals("Retalhuleu")||this.z.getDestinoDep().equals("San Marcos")){
             z.setEstandar( 29);
             z.setEspecial(34);
+            regContador[4]="Suroccidente";
+            regNum[4]=regNum[4]+1;
        }
       else if(this.z.getDestinoDep().equals("Huehuetenango")||this.z.getDestinoDep().equals("Quiche") ){
             z.setEstandar( 40);
             z.setEspecial(44.50);
+            regContador[5]="Noroccidente";
+            regNum[5]=regNum[5]+1;
    
        }
       else if(this.z.getDestinoDep().equals("Sacatepequez")||this.z.getDestinoDep().equals("Chimaltenango")||this.z.getDestinoDep().equals("Escuintla")){
             z.setEstandar( 38.00);
             z.setEspecial(41.00);
+            regContador[6]="Central";
+            regNum[6]=regNum[6]+1;
    
        }
       else if(this.z.getDestinoDep().equals("Peten")){
             z.setEstandar( 51);
             z.setEspecial(68);
+            regContador[7]="Peten";
+            regNum[7]=regNum[7]+1;
         
        }
         
@@ -1166,7 +1194,8 @@ facturacion z= new facturacion();
         
         JOptionPane.showMessageDialog(null, "COTIZACION "+ "\n" + "Total Estandar:Q"+ totalEstandar + "\n" + "total especial:Q " + totalEspecial);
         
-        
+        origenDicGUI.setText("");
+        destinoDicGUI.setText("");
         
         
     }//GEN-LAST:event_cotizarGUIActionPerformed
@@ -1215,7 +1244,8 @@ facturacion z= new facturacion();
         zgy = zgy.replaceAll(primDoce, remp);
         tarjetaFactGUI.addItem(zgy);
         
-        
+        tarjetaNomGUI.setText("");
+        tarjetaNumGUI.setText("");
         
         
     }//GEN-LAST:event_registrarTarGUIActionPerformed
@@ -1301,10 +1331,9 @@ facturacion z= new facturacion();
         int cant1 =Integer.parseInt(cantidadGUI.getText());
         int cant5 = Integer.parseInt(cantidadGUI.getText());
         
-        paquetesA= paquetesA + cant5;
+        paquetesA = paquetesA + cant5;
         System.out.println("BOTON PAQUETES1:"+ paquetesA);
-        
-        
+
 
         frameCliente.addPaquetesRep(cant1);
         
@@ -1321,7 +1350,7 @@ facturacion z= new facturacion();
         
         
         
-        
+        cvvFactGUI.setText("");
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1467,6 +1496,20 @@ facturacion z= new facturacion();
         dispose();
         enviosSolicitados pi = new enviosSolicitados();
         pi.setVisible(true);
+        
+        //--------prueba
+        System.out.println("BOTON PAQUETES2:"+ paquetesA);
+        for (int i = 0; i < this.repList.size(); i++) {
+            if(this.repList.get(i).getCorreoA().equals(correo2)){
+                this.repList.get(i).setPaquetesA(paquetesA);
+                JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS " );
+                
+    
+            }
+            System.out.println("BOTON PAQUETES3:"+ paquetesA);
+            System.out.println("" + this.repList.get(i).getPaquetesA() + "--"+ this.repList.get(i).getCorreoA());
+            
+        }
     }//GEN-LAST:event_verEnviosGUIActionPerformed
 
     /**

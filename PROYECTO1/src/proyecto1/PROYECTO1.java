@@ -12,7 +12,8 @@ public class PROYECTO1 {
     public static ArrayList <envioSol> gList = new ArrayList<>();
     
     public static ArrayList <reporteA> repList = new ArrayList<>();
-    
+    static String[] regContador = new String[8]; /// nombre
+    static int[] regNum = new int[8];
     public static int numeroFact= 0;
     
     
