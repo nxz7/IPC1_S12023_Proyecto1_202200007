@@ -95,7 +95,33 @@ public class frameCliente extends javax.swing.JFrame {
                         destinoDepGUI.addItem(f);
                         origenDepGUI.addItem(v);
                         
-             }    }}
+             }  
+            int itemC = origenDepGUI.getItemCount();
+            for (int i = 0; i < itemC; i++) {
+            Object item = origenDepGUI.getItemAt(i);
+            for (int j = i + 1; j < itemC; j++) {
+            if (item.equals(origenDepGUI.getItemAt(j))) {
+                origenDepGUI.removeItemAt(j);
+                itemC--;
+                j--;
+            }
+        }
+    }
+            
+            int itemC2 = destinoDepGUI.getItemCount();
+            for (int i = 0; i < itemC2; i++) {
+            Object item = destinoDepGUI.getItemAt(i);
+            for (int j = i + 1; j < itemC2; j++) {
+            if (item.equals(destinoDepGUI.getItemAt(j))) {
+                destinoDepGUI.removeItemAt(j);
+                itemC2--;
+                j--;
+            }
+        }
+    }
+            
+            
+            }}
         
         catch (Exception e) {
            System.out.println(e);
@@ -1099,6 +1125,19 @@ facturacion z= new facturacion();
     }//GEN-LAST:event_origenDepGUIActionPerformed
 
     private void destinoDepGUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destinoDepGUIActionPerformed
+        /////**********************
+        
+    /*destinoMuniGUI.removeAllItems();
+    destinoMuniGUI.setSelectedItem(null);
+    String elegido = origenDepGUI.getSelectedItem().toString();
+    if (elegido != null) {
+        for (registroArreglos item : bList) {
+            if (item.getDepNom().equals(elegido)) {
+                destinoMuniGUI.addItem(item.getMuniNombre());
+            }
+        }
+    }*/
+
         
     }//GEN-LAST:event_destinoDepGUIActionPerformed
 

@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class enviosSolicitados extends javax.swing.JFrame {
     public  ArrayList <envioSol> gList;
     //public  ArrayList <reporteA> repList;
-    private String cod, tipTot, dest, tipoP;
+    // ****** private String cod, tipTot, dest, tipoP;
     //public String correo2;
     
     //this.repList= PROYECTO1.repList; - public  ArrayList <reporteA> repList;

@@ -528,7 +528,7 @@ catch (Exception e) {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JOptionPane.showMessageDialog(null, " cant "+ this.repList.get(0).getPaquetesA()+ this.repList.get(0).getCorreoA());
+ 
         dispose();
         repLista pi = new repLista();
         pi.setVisible(true);
